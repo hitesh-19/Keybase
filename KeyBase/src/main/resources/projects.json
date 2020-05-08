@@ -1,0 +1,2 @@
+{"project_name":"Demo2","schema_name":"messenger_application","tables":["users"]}
+{"project_name":"Test","schema_name":"chatbot","tables":["chats","friends","user"]}

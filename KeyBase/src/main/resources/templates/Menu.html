@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/Menu_style.css">
+    <link rel="stylesheet" href="css/Add_Project_style.css">
+    <title>Keybase-Index</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<body>
+
+    <div class="tab">
+        <button class="tablinks" id="project-title" style="display: flex;"><span th:text="${project.getProject().getProject_name()}"></span> 
+            <div>
+                <img src="images/settings.png" onclick="toggleMenu()">
+                <ul class="list-group" id="menu-list">
+                    <li class="list-group-item" onclick="renameProject()">Rename Project</li>
+                    <li class="list-group-item" onclick="deleteProject()">Delete Project</li>
+                </ul>
+            </div>
+        </button>
+        <button class="tablinks" onclick="openCity(event, 'Database')" id="defaultOpen">Database</button>
+        <button class="tablinks" onclick="openCity(event, 'Api')">API keys</button>
+        <button class="tablinks" onclick="openCity(event, 'Auth')">Authentication</button>
+    </div>
+
+    <!--Database tab-->
+    <div id="Database" class="tabcontent">
+        <h3>Database</h3>
+
+        <!--delete schema-->
+        <div class="delete-schemas" id="delete-schema">
+            <div class="field-container">
+                <div class="inner-field-container">
+                    <div class="input-group mb-3">
+                        <label for="basic-url">Delete Schema</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <a onclick="confirmDeleteSchema()"><span class="input-group-text" id="basic-addon2" style="background-color: rgb(216, 0, 0);">Confirm</span></a>
+                            </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="input-group-append">
+                                <a onclick="cancelDeleteSchema()"><span class="input-group-text" id="basic-addon2" style="background-color: rgb(100, 100, 100);">Cancel</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="schema-tables" id="schema-table">
+            <div class="schema-heading">
+                <h4 th:text="${project.getProject().getSchema_name()}"></h4>
+                <div>
+                    <button class="btn btn-danger" onclick="deleteSchema()">Delete</button>
+                </div>
+            </div>
+            <div class="table-list">
+                <div class="table-heading" th:each="tables :${project.getProject().getTables()}">
+                    <h5 th:text="${tables}"></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+    <!--Api tab-->
+    <div id="Api" class="tabcontent">
+        <h3>Api Key's</h3>
+
+		<div class="create-api" id="create-api-key">
+            <div class="field-container">
+                <div class="inner-field-container">
+                	<form action="/create-api" method="POST">
+                		<label for="basic-url">Enter Key<div class="exit" onclick="exitApi()">x</div></label>
+	                    <div class="input-group mb-3">
+	                        <input type="text" class="form-control" placeholder="New Api Key" name="api_key" aria-label="Recipient's username" aria-describedby="basic-addon2">
+	                        <div class="input-group-append">
+	                        <a onclick="addNewApi()" style="padding:0px;"><button type="submit" style="border:none; outline:none; padding:0px"><span class="input-group-text" id="basic-addon2" onclick="createdApi()">Add</span></button></a>
+	                        </div>
+	                    </div>
+	    
+	                    <!-- Radio buttons -->
+	                    <div class="custom-control custom-radio">
+	                        <input type="radio" class="custom-control-input" id="Select" name="key_title" value="Select">
+	                        <label class="custom-control-label" for="Select">Select All Data</label>
+	                    </div>
+	                    <div class="custom-control custom-radio">
+	                        <input type="radio" class="custom-control-input" id="Insert" name="key_title" value="Insert">
+	                        <label class="custom-control-label" for="Insert">Insert Data</label>
+	                    </div>
+	                    <div class="custom-control custom-radio">
+	                        <input type="radio" class="custom-control-input" id="Delete" name="key_title" value="Delete">
+	                        <label class="custom-control-label" for="Delete">Delete Data</label>
+	                    </div>
+                	</form>
+                </div>
+            </div>
+        </div>
+        
+        <!--Add new Api key-->
+        <div class="add-api">
+            &nbsp;
+            <div>
+                <button  class="btn btn-success" onclick="createApi()">+ Api key</button>
+                <div class="api-details" id="api">
+                    <div class="field-container">
+                        <div class="inner-field-container">
+                            <label for="basic-url">Select table from Database</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                <a  onclick="openCity(event, 'Database')">
+                                    <span class="input-group-text" id="basic-addon2" style="cursor: default;">Select table</span>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--All api list-->
+        <div class="api-list" th:if="${project.getApikeys()!=null}" th:each="api:${project.getApikeys()}">
+            <h4 th:text="${api.getApi_key()}"></h4>
+            <div class="api-location">
+                <p th:text="${api.getKey_title()+' -> '+api.getSchema_name()+'.'+api.getTable_name()}"></p>
+                <div>
+                    <button class="btn btn-danger" onclick="deleteApi()">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="delete-apis" id="delete-api">
+            <div class="field-container">
+                <div class="inner-field-container">
+                    <div class="input-group mb-3">
+                        <label for="basic-url">Delete Api key</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <a onclick="confirmDeleteApi()"><span class="input-group-text" id="basic-addon2" style="background-color: rgb(216, 0, 0);">Confirm</span></a>
+                            </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="input-group-append">
+                                <a onclick="cancelDeleteApi()"><span class="input-group-text" id="basic-addon2" style="background-color: rgb(100, 100, 100);">Cancel</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Auth tab-->
+    <div id="Auth" class="tabcontent">
+    <h3>Authentication</h3>
+    <p>Tokyo is the capital of Japan.</p>
+    </div>
+
+    <!--Rename Project-->
+    <div class="rename-project" id="rename">
+        <div class="field-container">
+            <div class="inner-field-container">
+                <label for="basic-url">Project title<div class="exit" onclick="exit()">x</div></label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Title name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                    <a onclick="add()"><span class="input-group-text" id="basic-addon2">Add</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Delete prject-->
+    <div class="delete-project" id="delete">
+        <div class="field-container">
+            <div class="inner-field-container">
+                <div class="input-group mb-3">
+                    <label for="basic-url">Delete Project</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <a onclick="confirmDelete()"><span class="input-group-text" id="basic-addon2" style="background-color: rgb(216, 0, 0);">Confirm</span></a>
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="input-group-append">
+                            <a onclick="cancelDelete()"><span class="input-group-text" id="basic-addon2" style="background-color: rgb(100, 100, 100);">Cancel</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    var toggle_menu = false;
+    var toggle_schema = false;
+
+    document.getElementById("menu-list").style.display = "none";
+    document.getElementById("rename").style.display = "none";
+    document.getElementById("delete").style.display = "none";
+
+    //Database
+    document.getElementById("create-api-key").style.display = "none";
+    document.getElementById("delete-schema").style.display = "none";
+    // document.getElementById("schema-alert").style.display = "none";
+
+    //api
+    document.getElementById("api").style.display = "none";
+    document.getElementById("delete-api").style.display = "none";
+
+    function openCity(evt, tabName) {
+        
+        document.getElementById("api").style.display = "none";
+
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " active";
+
+      document.getElementById("menu-list").style.display = "none";
+    }
+
+    function toggleMenu() {
+
+        toggle_menu = !toggle_menu;
+
+        if(toggle_menu)
+            document.getElementById("menu-list").style.display = "block";
+        else
+            document.getElementById("menu-list").style.display = "none";
+    }
+    function add() {
+        document.getElementById("menu-list").style.display = "none";
+        document.getElementById("rename").style.display = "none";
+    }
+    function exit() {
+        document.getElementById("rename").style.display = "none";
+        document.getElementById("menu-list").style.display = "none";
+    }
+    function renameProject() {
+        document.getElementById("rename").style.display = "block";
+    }
+    function deleteProject() {
+        document.getElementById("delete").style.display = "block";
+        document.getElementById("menu-list").style.display = "none";
+    }
+    function confirmDelete() {
+        document.getElementById("delete").style.display = "none";
+    }
+    function cancelDelete() {
+        document.getElementById("delete").style.display = "none";
+    }
+
+    //Database
+    function createApi() {
+        document.getElementById("create-api-key").style.display = "block";
+    }
+    function createdApi() {
+        document.getElementById("create-api-key").style.display = "none";
+    }
+    function exitApi() {
+        document.getElementById("create-api-key").style.display = "none";
+    }
+    function deleteSchema() {
+        document.getElementById("delete-schema").style.display = "block";
+    }
+    function confirmDeleteSchema() {
+        document.getElementById("delete-schema").style.display = "none";
+    }
+    function cancelDeleteSchema() {
+        document.getElementById("delete-schema").style.display = "none";
+    }
+
+    //api key
+    function addApi() {
+        document.getElementById("api").style.display = "block";
+    }
+    function deleteApi() {
+        document.getElementById("delete-api").style.display = "block";
+    }
+    function confirmDeleteApi() {
+        document.getElementById("delete-api").style.display = "none";
+    }
+    function cancelDeleteApi() {
+        document.getElementById("delete-api").style.display = "none";
+    }
+    
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+</html>

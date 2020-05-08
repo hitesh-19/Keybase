@@ -1,0 +1,265 @@
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+.rename-project {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #7474747c;
+}
+.field-container label {
+    display: flex;
+    justify-content: space-between;
+}
+.field-container .exit {
+    border-radius: 3px;
+    padding: 3px 10px;
+    background-color: rgb(228, 0, 0);
+    color: aliceblue;
+}
+.rename-project .field-container .inner-field-container {
+    background-color: rgb(54, 54, 54);
+    color: white;
+}
+.delete-project {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #7474747c;
+    display: flex;
+    justify-content: center;
+}
+.delete-project .field-container{
+    width: 100%;
+}
+.delete-project .field-container .inner-field-container {
+    background-color: rgb(54, 54, 54);
+    color: white;
+    width: 25%;
+}
+.delete-project #basic-addon2 {
+    cursor: pointer;
+}
+/* Style the tab */
+.tab {
+    position: fixed;
+  float: left;
+  background-color: #272727;
+  width: 25%;
+  height: 100vh;
+}
+#project-title {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+    color: rgb(145, 204, 255);
+    font-weight: 500;
+}
+#project-title:hover {
+    cursor: default;
+}
+#project-title img:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+#project-title img {
+    width: 25px;
+    height: 25px;
+    position: relative;
+}
+#project-title .list-group {
+    position: absolute;
+    top: 5rem;
+}
+#project-title .list-group li {
+    color: black;
+    font-size: 15px;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+}
+#project-title .list-group li:hover {
+    background-color: rgb(182, 226, 255);
+}
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: white;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: rgb(32, 34, 37);
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  border-left: 4px solid rgb(52, 164, 255);
+}
+
+/* Database tab */
+.tabcontent {
+    margin-left: 25%;
+    float: left;
+    padding: 30px 20px;
+    width: 75%;
+    border-left: none;
+}
+.tabcontent h3 {
+    border: 2px solid rgba(163, 163, 163, 0.527);
+    border-radius: 5px;
+    background-color: rgba(221, 221, 221, 0.432);
+    padding: 7px 15px;
+    font-weight: 700;
+    text-align: center;
+    color: rgb(18, 42, 70);
+}
+#Database .schema-tables {
+    width: 80%;
+    margin: 8% 8%;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid rgb(104, 104, 104);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#Database .schema-heading {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+#Database .delete-schemas .field-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #7474747c;
+}
+#Database .delete-schemas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #7474747c;
+    display: flex;
+    justify-content: center;
+}
+#Database .delete-schemas .field-container{
+    width: 100%;
+}
+#Database .delete-schemas .field-container .inner-field-container {
+    background-color: rgb(54, 54, 54);
+    color: white;
+    width: 25%;
+}
+#Database .delete-schemas #basic-addon2 {
+    cursor: pointer;
+}
+#Database .table-list {
+    margin: 20px 0px;
+}
+#Database .table-list .table-heading {
+    margin: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(177, 177, 177);
+    display: flex;
+    justify-content: space-between;
+}
+
+/* api styling*/
+ .create-api .field-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #7474747c;
+}
+ .create-api .field-container .inner-field-container {
+    background-color: rgb(54, 54, 54);
+    color: white;
+}
+.add-api {
+    width: 97%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+.add-api .api-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #7474747c;
+    display: flex;
+    justify-content: center;
+}
+.add-api .api-details .field-container .inner-field-container{
+    width: 50%;
+    background-color: rgb(54, 54, 54);
+    color: white;
+}
+.api-list {
+    width: 80%;
+    margin: 4% 8%;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid rgb(104, 104, 104);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.api-list h4 {
+    color: rgba(36, 55, 90, 0.774);
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+.api-list .api-location {
+    display: flex;
+    justify-content: space-between;
+}
+.api-list .api-location p {
+    font-size: 17px;
+}
+.delete-apis .field-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #7474747c;
+}
+.delete-apis {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #7474747c;
+    display: flex;
+    justify-content: center;
+}
+.delete-apis .field-container{
+    width: 100%;
+}
+.delete-apis .field-container .inner-field-container {
+    background-color: rgb(54, 54, 54);
+    color: white;
+    width: 25%;
+}
+.delete-apis #basic-addon2 {
+    cursor: pointer;
+}

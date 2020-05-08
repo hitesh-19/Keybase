@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.main-background {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(57deg, #04ddbd, #74a3eb);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 0% 90%);
+} 
+.main-container {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 80vh;
+}
+.main-container nav {
+    width: 100%;
+    padding: 0px;
+}
+.main-container .navbar-background {
+    width: 100%;
+    padding: 5px 60px;
+    background-color: #00ff73;
+    display: flex;
+}
+.main-container .navbar-background img {
+    width: 40px;
+    height: 40px;
+}
+.main-container .navbar-background span {
+    margin: 0px;
+    font-size: 30px;
+    color: rgb(0, 22, 51);
+}
+.container-select-project {
+    margin-top: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-select-project .row{
+    width: 70%;
+}
+.container-select-project .row .col-xl-6 a {
+    text-decoration: none;
+}
+.container-select-project .row .col-xl-6{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.container-select-project .row .col-xl-6 a:focus {
+	outline: none;
+}
+.container-select-project .row .col-xl-6 .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.container-select-project .row .col-xl-6 .card:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+ 
+/* responsive style */
+@media only screen and (max-width: 500px) {
+    .container-select-project {
+        margin-top: 5rem;
+    }
+}

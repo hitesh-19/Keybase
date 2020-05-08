@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/Project_tab_style.css">
+    <link rel="stylesheet" href="css/Add_Project_style.css">
+    <title>Keybase-Add Project</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<body>
+    <div class="main-background"></div>
+    <div class="main-container">
+        
+        <nav class="navbar navbar-custom bg-light">
+            <div class="navbar-background">
+                <a href="/">
+                    <span class="navbar-brand mb-0 h1">
+                        <img src="images/Key.png"> <span> Keybase</span>
+                    </span>
+                </a>
+            </div>
+        </nav>
+
+        <!--Add Project field-->
+        <div class="field-container">
+            <div class="inner-field-container">
+            	<form action="/menu-create" method="POST">
+            		<label for="basic-url">Project title</label>
+	                <div class="input-group mb-3">
+	                    <input type="text" class="form-control" placeholder="Title name" name="project_name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+	                </div>
+	                <label for="basic-url">Schema Name</label>
+	                <div class="input-group mb-3">
+	                    <input type="text" class="form-control" placeholder="Schema's" name="schema_name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+	                </div>
+	                <div class="submit-btn">
+	                    &nbsp;
+	                    <div class="input-group-append">
+	                        <a><button type="submit" style="border:none; outline:none"><span class="input-group-text" id="basic-addon2">Add</span></button></a>
+	                    </div>
+	                </div>
+            	</form>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
